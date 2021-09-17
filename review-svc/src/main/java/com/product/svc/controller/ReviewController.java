@@ -24,7 +24,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@Api(value = "Product related APIs")
+@Api(value = "Product Review related APIs")
 @RequestMapping("/review")
 public class ReviewController {
 

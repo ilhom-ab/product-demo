@@ -38,12 +38,16 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public ProductDto getByProductId(String productId) throws NoResultException {
-		Optional<Product> product = productRepository.findByProductId(productId);
-		if (!product.isPresent()) {
+		Optional<Product> existingProduct = productRepository.findByProductId(productId);
+		if (!existingProduct.isPresent()) {
 			throw new NoResultException("Product not found");
+		}else {
+			Product product = existingProduct.get();
+			product.setNumberOfReviews(product.getNumberOfReviews()+1);
+			productRepository.save(product);
 		}
 
-		return CommonUtil.mapToProductDtoResponse(product.get());
+		return CommonUtil.mapToProductDtoResponse(existingProduct.get());
 	}
 
 	@Override

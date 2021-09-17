@@ -31,10 +31,10 @@ public class Product {
 	private String productName;
 	
 	@Column(name = "average_review_score")
-	private String avrgScore;
+	private Integer avrgScore;
 	
 	@Column(name = "number_of_reviews")
-	private String numberOfReviews;
+	private Integer numberOfReviews;
 	
 
 }
